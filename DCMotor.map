@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_31 (A) n/Äp«æ.
+Microchip Technology Inc, vv3_31 (A) «
 
 Tool Name:
   c:\program files (x86)\microchip\mplab c30\bin\bin\..\bin/pic30-coff-ld.exe
@@ -33,6 +33,8 @@ Command:
   sys_schedule.o \
   sys_tasks.o \
   hal_motor.o \
+  hal_servo.o \
+  hal_line_follower.o \
   -Tp33FJ128MC804.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   -Map=DCMotor.map \
@@ -48,7 +50,7 @@ Archive member included because of file (symbol)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
                               (_resetPRI)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(delay32.o)
-                              main.o (__delay32)
+                              mcal_adc.o (__delay32)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o) (_data_init_standard)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
@@ -80,11 +82,11 @@ Program Memory  [Origin = 0x200, Length = 0x155fe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x3c4           0x5a6  (1446)
-.text                        0x5c4               0xe88          0x15cc  (5580)
-.dinit                      0x144c                0x1a            0x27  (39)
-.text                       0x1466                0x28            0x3c  (60)
+.text                        0x5c4               0xf4a          0x16ef  (5871)
+.dinit                      0x150e                0x1a            0x27  (39)
+.text                       0x1528                0x28            0x3c  (60)
 
-                     Total program memory used (bytes):         0x1bd5  (7125) 5%
+                     Total program memory used (bytes):         0x1cf8  (7416) 5%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -139,8 +141,8 @@ External Symbols in Program Memory (by address):
                   0x00024e                  __data_init
                   0x00024e                  __data_init_standard
                   0x0002ac                  __DefaultInterrupt
-                  0x0002b0                  ___eqsf2
                   0x0002b0                  ___lesf2
+                  0x0002b0                  ___eqsf2
                   0x0002b0                  ___ltsf2
                   0x0002b4                  ___floatsisf
                   0x00030a                  ___subsf3
@@ -225,29 +227,33 @@ External Symbols in Program Memory (by address):
                   0x001274                  _INT0_vInit
                   0x001294                  _INT1_vInit
                   0x0012b8                  _INT2_vInit
-                  0x0012e6                  _vMotorInit
-                  0x0012f8                  _vSetMotorDir
-                  0x001308                  _vSetMotorSpeed
-                  0x001340                  _ADC_vInit
-                  0x00135e                  _ADC_u16Read
-                  0x001398                  _QEI_vInit
-                  0x0013d0                  _QEI_u16getCount
-                  0x0013d8                  _QEI_vResetCount
-                  0x0013e2                  _TASK_Inits
-                  0x0013f4                  _TASK_1ms
-                  0x0013fa                  _TASK_5ms
-                  0x001400                  _TASK_10ms
-                  0x001406                  _TASK_100ms
-                  0x00140c                  _TASK_500ms
-                  0x001412                  _TASK_1000ms
-                  0x001418                  _main
-                  0x001466                  _MCAL_vInit
-                  0x00147c                  _OSC_vInit
+                  0x0012e6                  _LF_vSetPinsDir
+                  0x001308                  _LF_vWritePins
+                  0x00132a                  _LF_u8ReadPins
+                  0x001358                  _ADC_vInit
+                  0x001376                  _ADC_u16Read
+                  0x0013b0                  _vMotorInit
+                  0x0013c0                  _vSetMotorDir
+                  0x0013d0                  _vSetMotorSpeed
+                  0x001408                  _QEI_vInit
+                  0x001440                  _QEI_u16getCount
+                  0x001448                  _QEI_vResetCount
+                  0x001452                  _main
+                  0x00149a                  _vSetAngle
+                  0x0014d8                  _TASK_Inits
+                  0x0014ea                  _TASK_1ms
+                  0x0014f0                  _TASK_5ms
+                  0x0014f6                  _TASK_10ms
+                  0x0014fc                  _TASK_100ms
+                  0x001502                  _TASK_500ms
+                  0x001508                  _TASK_1000ms
+                  0x001528                  _MCAL_vInit
+                  0x00153e                  _OSC_vInit
 
 External Symbols in Program Memory (by name):
 
-                  0x00135e                  _ADC_u16Read
-                  0x001340                  _ADC_vInit
+                  0x001376                  _ADC_u16Read
+                  0x001358                  _ADC_vInit
                   0x0008ea                  _GPIO_u16ReadPort
                   0x000824                  _GPIO_u8ReadPortPin
                   0x0005c4                  _GPIO_u8SetPortPin
@@ -257,8 +263,11 @@ External Symbols in Program Memory (by name):
                   0x001294                  _INT1_vInit
                   0x0012b8                  _INT2_vInit
                   0x001260                  _INT_vInit
-                  0x001466                  _MCAL_vInit
-                  0x00147c                  _OSC_vInit
+                  0x00132a                  _LF_u8ReadPins
+                  0x0012e6                  _LF_vSetPinsDir
+                  0x001308                  _LF_vWritePins
+                  0x001528                  _MCAL_vInit
+                  0x00153e                  _OSC_vInit
                   0x000928                  _PWM1_vInit
                   0x000a0c                  _PWM1_vSetDuty
                   0x000bc6                  _PWM1_vSetDutyPeriod
@@ -267,9 +276,9 @@ External Symbols in Program Memory (by name):
                   0x000b4c                  _PWM2_vSetDuty
                   0x000bee                  _PWM2_vSetDutyPeriod
                   0x0009dc                  _PWM2_vSetPeriod
-                  0x0013d0                  _QEI_u16getCount
-                  0x001398                  _QEI_vInit
-                  0x0013d8                  _QEI_vResetCount
+                  0x001440                  _QEI_u16getCount
+                  0x001408                  _QEI_vInit
+                  0x001448                  _QEI_vResetCount
                   0x001054                  _SPI_RF_u8ReadReg_5Bytes
                   0x000eca                  _SPI_RF_u8RxBuffFull
                   0x000eaa                  _SPI_RF_u8RxBuffOvf
@@ -280,13 +289,13 @@ External Symbols in Program Memory (by name):
                   0x0010b0                  _SPI_RF_u8WriteReg_5Bytes
                   0x000f40                  _SPI_RF_vDisable
                   0x000ed6                  _SPI_RF_vInit
-                  0x001412                  _TASK_1000ms
-                  0x001406                  _TASK_100ms
-                  0x001400                  _TASK_10ms
-                  0x0013f4                  _TASK_1ms
-                  0x00140c                  _TASK_500ms
-                  0x0013fa                  _TASK_5ms
-                  0x0013e2                  _TASK_Inits
+                  0x001508                  _TASK_1000ms
+                  0x0014fc                  _TASK_100ms
+                  0x0014f6                  _TASK_10ms
+                  0x0014ea                  _TASK_1ms
+                  0x001502                  _TASK_500ms
+                  0x0014f0                  _TASK_5ms
+                  0x0014d8                  _TASK_Inits
                   0x00110a                  _TASK_vSchedule
                   0x000cd0                  _TIM2_u16GetCount
                   0x000c1a                  _TIM2_vInit
@@ -348,14 +357,15 @@ External Symbols in Program Memory (by name):
                   0x00056a                  __funpack2
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x001418                  _main
+                  0x001452                  _main
                   0x0011be                  _test_pin_setup
                   0x0011f2                  _test_vToggle_CE
                   0x0011d0                  _test_vToggle_CSN
                   0x00120c                  _test_vToggle_IRQ
-                  0x0012e6                  _vMotorInit
-                  0x0012f8                  _vSetMotorDir
-                  0x001308                  _vSetMotorSpeed
+                  0x0013b0                  _vMotorInit
+                  0x00149a                  _vSetAngle
+                  0x0013c0                  _vSetMotorDir
+                  0x0013d0                  _vSetMotorSpeed
 
 Memory Configuration
 
@@ -395,6 +405,8 @@ LOAD mcal_timers.o
 LOAD sys_schedule.o
 LOAD sys_tasks.o
 LOAD hal_motor.o
+LOAD hal_servo.o
+LOAD hal_line_follower.o
 LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp33FJ128MC804-coff.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
@@ -1918,7 +1930,7 @@ LOAD data_init
 LOAD default_isr
 
 __c30_signature
-                  0x000000         0xa2
+                  0x000000         0xae
  __c30_signature
                   0x000000          0x6 main.o
  __c30_signature
@@ -1946,33 +1958,37 @@ __c30_signature
  __c30_signature
                   0x000048          0x6 hal_motor.o
  __c30_signature
-                  0x00004e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
+                  0x00004e          0x6 hal_servo.o
  __c30_signature
-                  0x000054          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(delay32.o)
+                  0x000054          0x6 hal_line_follower.o
  __c30_signature
-                  0x00005a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
+                  0x00005a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o)
  __c30_signature
-                  0x000060          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
+                  0x000060          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(delay32.o)
  __c30_signature
-                  0x000066          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
+                  0x000066          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(data_init_standard.o)
  __c30_signature
-                  0x00006c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
+                  0x00006c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
  __c30_signature
-                  0x000072          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
+                  0x000072          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
  __c30_signature
-                  0x000078          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
+                  0x000078          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
  __c30_signature
-                  0x00007e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixunssfsi.o)
+                  0x00007e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
  __c30_signature
-                  0x000084          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
+                  0x000084          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
  __c30_signature
-                  0x00008a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
+                  0x00008a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixunssfsi.o)
  __c30_signature
-                  0x000090          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
+                  0x000090          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
  __c30_signature
-                  0x000096          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
+                  0x000096          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
  __c30_signature
-                  0x00009c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
+                  0x00009c          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
+ __c30_signature
+                  0x0000a2          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
+ __c30_signature
+                  0x0000a8          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
 
 .ndata              0x0800          0x8
  .ndata             0x0800          0x8 mcal_timers.o
@@ -1990,7 +2006,7 @@ __c30_signature
  .nbss              0x0810          0x2 mcal_interrupts.o
                     0x0810                  bObstDetected
 
-.text             0x0005c4        0xe88
+.text             0x0005c4        0xf4a
  .text            0x0005c4        0x364 mcal_gpio.o
                   0x0005c4                  GPIO_u8SetPortPin
                   0x00076c                  GPIO_u8WritePortPin
@@ -2067,33 +2083,39 @@ __c30_signature
                   0x001274                  INT0_vInit
                   0x001294                  INT1_vInit
                   0x0012b8                  INT2_vInit
- .text            0x0012e6         0x5a hal_motor.o
-                  0x0012e6                  vMotorInit
-                  0x0012f8                  vSetMotorDir
-                  0x001308                  vSetMotorSpeed
- .text            0x001340         0x58 mcal_adc.o
-                  0x001340                  ADC_vInit
-                  0x00135e                  ADC_u16Read
- .text            0x001398         0x4a mcal_encoder.o
-                  0x001398                  QEI_vInit
-                  0x0013d0                  QEI_u16getCount
-                  0x0013d8                  QEI_vResetCount
- .text            0x0013e2         0x36 sys_tasks.o
-                  0x0013e2                  TASK_Inits
-                  0x0013f4                  TASK_1ms
-                  0x0013fa                  TASK_5ms
-                  0x001400                  TASK_10ms
-                  0x001406                  TASK_100ms
-                  0x00140c                  TASK_500ms
-                  0x001412                  TASK_1000ms
- .text            0x001418         0x34 main.o
-                  0x001418                  main
+ .text            0x0012e6         0x72 hal_line_follower.o
+                  0x0012e6                  LF_vSetPinsDir
+                  0x001308                  LF_vWritePins
+                  0x00132a                  LF_u8ReadPins
+ .text            0x001358         0x58 mcal_adc.o
+                  0x001358                  ADC_vInit
+                  0x001376                  ADC_u16Read
+ .text            0x0013b0         0x58 hal_motor.o
+                  0x0013b0                  vMotorInit
+                  0x0013c0                  vSetMotorDir
+                  0x0013d0                  vSetMotorSpeed
+ .text            0x001408         0x4a mcal_encoder.o
+                  0x001408                  QEI_vInit
+                  0x001440                  QEI_u16getCount
+                  0x001448                  QEI_vResetCount
+ .text            0x001452         0x48 main.o
+                  0x001452                  main
+ .text            0x00149a         0x3e hal_servo.o
+                  0x00149a                  vSetAngle
+ .text            0x0014d8         0x36 sys_tasks.o
+                  0x0014d8                  TASK_Inits
+                  0x0014ea                  TASK_1ms
+                  0x0014f0                  TASK_5ms
+                  0x0014f6                  TASK_10ms
+                  0x0014fc                  TASK_100ms
+                  0x001502                  TASK_500ms
+                  0x001508                  TASK_1000ms
 
-.dinit            0x00144c         0x1a
- .dinit           0x00144c         0x1a data_init
+.dinit            0x00150e         0x1a
+ .dinit           0x00150e         0x1a data_init
 
-.text             0x001466         0x28
- .text            0x001466         0x16 mcal_init.o
-                  0x001466                  MCAL_vInit
- .text            0x00147c         0x12 mcal_osc.o
-                  0x00147c                  OSC_vInit
+.text             0x001528         0x28
+ .text            0x001528         0x16 mcal_init.o
+                  0x001528                  MCAL_vInit
+ .text            0x00153e         0x12 mcal_osc.o
+                  0x00153e                  OSC_vInit

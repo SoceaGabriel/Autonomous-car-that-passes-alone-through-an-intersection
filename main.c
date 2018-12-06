@@ -2,7 +2,9 @@
 #include "mcal_init.h"
 #include "hal_motor.h"
 #include "hal_servo.h"
+#include "hal_line_follower.h"
 #include "sys_schedule.h"
+
 
 int main()
 {
@@ -10,6 +12,9 @@ int main()
 	T_U8 u8Speed=0;
     vMotorInit();
 	TASK_Inits();
+	
+
+	//DC Motor
 	//TASK_vSchedule();
 	/*
 	while(1)
@@ -26,6 +31,10 @@ int main()
 		}
 	}
 	*/
+
+
+	//ServoMotor
+	/*
 		int i,j;
 		u8Speed=0;
 		u8Dir=INAINTE;
@@ -69,9 +78,29 @@ int main()
 			vSetAngle(i);
 			__delay_ms(80);
 		}
+	*/
+
+	//Line Follower
+	u8Speed=0;
+	u8Dir=INAINTE;
+	T_U16 lf;
 	while(1)
 	{
-		
+		lf=LF_u8ReadPins();
+		if(lf==0)
+		{
+			u8Speed=30;
+			u8Dir=INAINTE;
+			vSetMotorSpeed(u8Speed);
+			vSetMotorDir(u8Dir);
+		}
+		else
+		{
+			u8Speed=30;
+			u8Dir=INAPOI;
+			vSetMotorSpeed(u8Speed);
+			vSetMotorDir(u8Dir);
+		}
 	}
 
 	
