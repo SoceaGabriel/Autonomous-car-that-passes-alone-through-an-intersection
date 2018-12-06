@@ -6,7 +6,7 @@
 void vMotorInit(void)
 {
 	GPIO_u8SetPortPin(PORT_A,9,DIGITAL,INAINTE);
-	PWM1_vInit();
+	//PWM1_vInit();
 
 }
 void vSetMotorDir(BOOL u8Dir)

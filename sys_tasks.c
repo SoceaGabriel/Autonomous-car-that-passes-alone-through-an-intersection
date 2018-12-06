@@ -9,6 +9,8 @@
 #include "sys_tasks.h"
 
 #include "mcal_init.h"
+#include "hal_servo.h"
+#include "hal_motor.h"
 
 void TASK_Inits()
 {
