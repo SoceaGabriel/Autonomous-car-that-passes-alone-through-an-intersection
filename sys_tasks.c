@@ -11,16 +11,18 @@
 #include "mcal_init.h"
 #include "hal_servo.h"
 #include "hal_motor.h"
+#include "ASW.h"
 
 void TASK_Inits()
 {
+	RTE_vMotorInit();
     MCAL_vInit();
     GPIO_u8SetPortPin(PORT_A, 10, DIGITAL, OUTPUT);	
 }
 
 void TASK_1ms()
 {
-
+	
 }
 
 void TASK_5ms()
@@ -40,10 +42,10 @@ void TASK_100ms()
 
 void TASK_500ms()
 { 
-
+	Aplication();
 }
 
 void TASK_1000ms()
 {
-
+	
 }

@@ -8,14 +8,16 @@
 
 int main()
 {
+	TASK_Inits();
+	TASK_vSchedule();
+	//initializari
+	/*
 	T_U8 u8Dir=INAINTE;
 	T_U8 u8Speed=0;
-    vMotorInit();
-	TASK_Inits();
-	
+    
+	*/
 
 	//DC Motor
-	//TASK_vSchedule();
 	/*
 	while(1)
 	{
@@ -81,13 +83,14 @@ int main()
 	*/
 
 	//Line Follower
+	/*
 	u8Speed=0;
 	u8Dir=INAINTE;
 	T_U16 lf;
 	while(1)
 	{
 		lf=LF_u8ReadPins();
-		if(lf==0)
+		if(lf==1)
 		{
 			u8Speed=30;
 			u8Dir=INAINTE;
@@ -102,7 +105,11 @@ int main()
 			vSetMotorDir(u8Dir);
 		}
 	}
-
+	*/
+	while(1)
+	{
+		
+	}
 	
     return 0;
 }  
