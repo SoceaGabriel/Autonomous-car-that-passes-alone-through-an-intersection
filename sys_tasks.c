@@ -43,6 +43,7 @@ void TASK_100ms()
 void TASK_500ms()
 { 
 	Aplication();
+	T_F16 val = batteryLevel();
 }
 
 void TASK_1000ms()
