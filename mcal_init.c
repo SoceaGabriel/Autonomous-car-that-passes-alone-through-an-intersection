@@ -16,5 +16,4 @@ void MCAL_vInit()
     QEI_vInit();
     TIM2_vInit();
     TIM3_vInit();
-    
 }

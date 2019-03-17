@@ -21,7 +21,7 @@ void LF_vWritePins(void)
 T_U16 LF_u8ReadPins(void)
 {
 	T_U16 val=0;
-	T_U16 mask=0b111111;
+	T_U16 mask=0b1111110;
 	LF_vWritePins();
 	__delay_us(10);
 	LF_vSetPinsDir(INPUT);

@@ -15,6 +15,8 @@
 #define INT1Pin 31
 #define INT2Pin 22
 
+BOOL get_FlagObst();
+
 /* Interrupt initialization function declarations  */
 void INT_vInit(void);    
 void INT0_vInit(T_U8);
@@ -25,7 +27,8 @@ void INT2_vInit(T_U8);
 void __attribute__((__interrupt__, no_auto_psv)) _INT0Interrupt(void);
 void __attribute__((__interrupt__, no_auto_psv)) _INT1Interrupt(void);
 void __attribute__((__interrupt__, no_auto_psv)) _INT2Interrupt(void);
-
+void INT0_vSetPolarity(BOOL polarity);
+BOOL INT0_vGetPolarity();
 
 #endif	/* MCAL_INTERRUPTS_H */
 

@@ -11,30 +11,39 @@ extern BOOL bRF_IRQ;
 /* Flag set in INT0, by the Obstacle Sensor Module. (Pin goes LOW when obstacle is detected) */
 BOOL bObstDetected;
 
-
+BOOL get_FlagObst()
+{
+    return bObstDetected;
+}
 
 /* Obstacle sensor interrupt */
 /*****************************/
+
+void INT0_vSetPolarity(BOOL polarity)
+{
+    INTCON2bits.INT0EP = polarity;
+}
+
+BOOL INT0_vGetPolarity()
+{
+    return INTCON2bits.INT0EP;
+
+}
 void __attribute__((__interrupt__, no_auto_psv)) _INT0Interrupt(void)
 {
-    /* Clear INT0 interrupt flag */
     IFS0bits.INT0IF = 0;
-    
-    /* Obstacle detected */
-    if(NEG_EDGE == INTCON2bits.INT0EP)
+    BOOL polarity;
+  
+    polarity=INT0_vGetPolarity();
+    if(polarity==NEG_EDGE)
     {
-        bObstDetected = TRUE;
-        
-        /* wait for POS EDGE */
-        INTCON2bits.INT0EP = POS_EDGE;
+        bObstDetected=TRUE; //Am detectat obstacolul
+        INT0_vSetPolarity(POS_EDGE);
     }
-    /* Obstacle gone -> POS_EDGE */
     else
     {
-        bObstDetected = FALSE;
-        
-        /* wait for NEG EDGE */
-        INTCON2bits.INT0EP = NEG_EDGE;
+         bObstDetected=FALSE; //Nu mai exista obstacol
+         INT0_vSetPolarity(NEG_EDGE);
     }
 }
 

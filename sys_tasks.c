@@ -12,6 +12,8 @@
 #include "hal_servo.h"
 #include "hal_motor.h"
 #include "ASW.h"
+#include "encoder.h"
+T_S16 deplasare;
 
 void TASK_Inits()
 {
@@ -27,7 +29,7 @@ void TASK_1ms()
 
 void TASK_5ms()
 {
-
+   
 }
 
 void TASK_10ms()
@@ -43,10 +45,11 @@ void TASK_100ms()
 void TASK_500ms()
 { 
 	Aplication();
-	T_F16 val = batteryLevel();
+	//Aplication_Obstacol();
 }
 
 void TASK_1000ms()
 {
 	
+
 }
