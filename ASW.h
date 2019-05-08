@@ -2,14 +2,8 @@
 #define _ASW_H_
 #include "RTE.h"
 
+extern stari procesare;
 
-
-void Faza_1();
-void Faza_2();
-void Faza_3();
-void Aplication();
-
-
-//void Aplication_Obstacol();
+void Aplicatie_Intersectie();
 
 #endif

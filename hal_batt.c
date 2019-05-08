@@ -17,8 +17,7 @@ T_F16 batteryLevel()
 	level = ADC_u16Read(0);
 	Vcit = (level*Vref)/Vmax;
 	Vbatt = Vcit*4;
-	// = Tens_max_batt - Vbatt;
-	//
+    
 	if(Vbatt>=7 && Vbatt<=8.4)
 	{
 		ChargeIntervalMax=8.4;

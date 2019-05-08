@@ -10,6 +10,10 @@
 
 #define ASW_COM_DIM_FIFO 64
 
+#define DIR_INAINTE 0b00
+#define DIR_STANGA 0b10
+#define DIR_DREAPTA 0b01
+
 
 void COM_vCheckIRQ(void);
 void COM_vSendMessage(T_U8 u8Message);

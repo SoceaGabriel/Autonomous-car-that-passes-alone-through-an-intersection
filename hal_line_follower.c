@@ -18,16 +18,15 @@ void LF_vWritePins(void)
 		GPIO_u8WritePortPin(PORT_C,i,1);
 	}
 }
-T_U16 LF_u8ReadPins(void)
+T_U8 LF_u8ReadPins(void)
 {
-	T_U16 val=0;
-	T_U16 mask=0b1111110;
+	T_U8 val=0;
+	T_U8 mask=0b111111;
 	LF_vWritePins();
 	__delay_us(10);
 	LF_vSetPinsDir(INPUT);
 	__delay_us(250);
 	val=GPIO_u16ReadPort(PORT_C);
 	val=val & mask;
-	
 	return val;
 }

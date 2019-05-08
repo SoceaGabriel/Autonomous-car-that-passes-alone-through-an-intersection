@@ -15,6 +15,8 @@ extern T_U8 au8RxBuff[];
 extern T_U8 u8RxBuff_Index;
 extern BOOL u8NewRX;
 
+extern carInfo carInf[4];
+
 /***********************************************************************************************************************
 *  Function name    : COM_vCheckIRQ
 *
@@ -77,7 +79,15 @@ void COM_vStartListening()
 ***********************************************************************************************************************/
 void COM_vProcessMessage(T_U8 u8Message)
 {
-    
+    T_U8 i,d,p,r;
+    r=(u8Message & (0b10000000))>>7;
+    d=(u8Message & (0b01100000))>>5;
+    p=(u8Message & (0b00011100))>>2;
+    i= u8Message & (0b00000011);
+    carInf[p].R_I=r;
+    carInf[p].DRUM=d;
+    carInf[p].POZ=p;
+    carInf[p].ID=i;
 }
 
 /***********************************************************************************************************************
@@ -104,4 +114,3 @@ void COM_vProcessFIFO()
         u8RxBuff_Index = 0;
     }
 }
-

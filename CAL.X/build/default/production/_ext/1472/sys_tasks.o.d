@@ -18,4 +18,6 @@ build/default/production/_ext/1472/sys_tasks.o:  \
 ../RTE.h  \
 ../hal_line_follower.h  \
  ../sys_schedule.h  \
-../encoder.h 
+../encoder.h  \
+../asw_com.h  \
+../asw_functions.h 

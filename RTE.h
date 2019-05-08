@@ -8,9 +8,6 @@
 #include "hal_line_follower.h"
 #include "sys_schedule.h"
 
-
-
-
 #define RTE_vMotorInit() vMotorInit()
 #define RTE_vSetMotorDir(a) vSetMotorDir(a)
 #define RTE_vSetMotorSpeed(a) vSetMotorSpeed(a)

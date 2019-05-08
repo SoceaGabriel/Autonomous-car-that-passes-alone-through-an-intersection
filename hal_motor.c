@@ -9,10 +9,12 @@ void vMotorInit(void)
 	//PWM1_vInit();
 
 }
+
 void vSetMotorDir(BOOL u8Dir)
 {
 	GPIO_u8WritePortPin(PORT_A,9,u8Dir);
 }
+
 void vSetMotorSpeed(T_U8 u8Speed)
 {
 	if(u8Speed>100)

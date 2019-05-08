@@ -17,4 +17,5 @@ build/default/production/_ext/1472/ASW.o:  \
  ../hal_motor.h  \
 ../hal_servo.h  \
 ../hal_line_follower.h  \
-../sys_schedule.h 
+../sys_schedule.h  \
+ ../asw_functions.h 

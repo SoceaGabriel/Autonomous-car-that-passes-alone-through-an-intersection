@@ -1,4 +1,3 @@
-
 #include "hal_encoder.h"
 
 T_S16 QEI_s16getElapsed()

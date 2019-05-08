@@ -34,7 +34,7 @@ void ADC_vInit()
     AD1CON3=0x1F00;
     
     /* Enable ADC Module */  
-    AD1CON1bits.ADON=1;          
+    AD1CON1bits.ADON=1;
 }
 
 

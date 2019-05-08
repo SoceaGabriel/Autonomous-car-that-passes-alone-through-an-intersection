@@ -26,6 +26,7 @@
       <itemPath>../hal_encoder.h</itemPath>
       <itemPath>../asw_com.h</itemPath>
       <itemPath>../hal_nRF.h</itemPath>
+      <itemPath>../asw_functions.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -55,6 +56,7 @@
       <itemPath>../hal_encoder.c</itemPath>
       <itemPath>../asw_com.c</itemPath>
       <itemPath>../hal_nRF.c</itemPath>
+      <itemPath>../asw_functions.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -229,6 +231,7 @@
         <property key="save-temps" value="false"/>
       </C30Global>
       <PICkit3PlatformTool>
+        <property key="firmware.download.all" value="false"/>
         <property key="tracecontrol.disablemacros" value="true"/>
         <property key="tracecontrol.medium" value="0"/>
         <property key="tracecontrol.select" value="0"/>

@@ -17,10 +17,15 @@ typedef enum _BOOL{FALSE=0, TRUE=1, UNDEFINED=2} BOOL;
 
 typedef struct carInfo
 {
-    T_U8 u8RoadNum;
-    T_U8 u8Direction;
-    BOOL bIsOnMain;
+    T_U8 ID;
+    T_U8 POZ;
+    T_U8 DRUM;
+    T_U8 R_I;
+    BOOL alocat;
 }carInfo; 
+
+//Automatul de stari ale aplicatiei
+typedef enum AutomatStari {DETECTARE_DRUM, PARCURGERE_L, ALEGERE_DRUM, INTERSECTIE, FINAL_DRUM} stari;
 
 #endif	/* GENERAL_TYPES_H */
 
